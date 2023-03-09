@@ -441,7 +441,12 @@ local license_plate = {
         accessToken = access_token_def,
         dataType = data_type_def,
         image = base64_def,
-        front = { type = "boolean" },
+        front = {
+            anyOf = {
+                { type = "boolean" },
+                { type = "string" , menu = {"true", "false"} }
+            }
+        },
         scene = {
             type = "string",
             emnu = { "lpr" , "general" }
