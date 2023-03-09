@@ -412,7 +412,7 @@ local vehicle_license_match_t = {
     ["住址"]         = { key = "address"},
     ["品牌型号"]     = { key = "model"},
     ["发证日期"]     = { key = "issue_date", fn = convert},
-    ["车辆类型"]     = { key = "register_date"},
+    ["车辆类型"]     = { key = "vehicle_type"},
     ["所有人"]       = { key = "owner"},
     ["使用性质"]     = { key = "use_character"},
     ["发动机号码"]   = { key = "engine_no"},
