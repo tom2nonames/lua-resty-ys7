@@ -302,7 +302,7 @@ function _M.ocr(self, type, opts)
         end
         data.words = words
 
-        if not data.locations then
+        if not data.locations or data.locations == ngx.null then
             return data
         end
 
