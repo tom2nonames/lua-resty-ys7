@@ -67,7 +67,7 @@ local base64_def = {
 local driver_license_type_def = {
     description = "驾行证类型",
     type = "string",
-    menu = {
+    enum = {
         "A1","A2","A3",
         "B1","B2",
         "C1","C2","C3","C4","C5",
@@ -261,7 +261,7 @@ local bank_card_res_data = {
     properties = {
         name   = { type = "string" },
         number = { type = "string" },
-        type   = { type = "integer", menu = { 0,1,2} }
+        type   = { type = "integer", enum = { 0,1,2} }
     },
     required = { "name", "number", "type"}
 }
@@ -281,7 +281,12 @@ local id_card = {
         accessToken = access_token_def,
         dataType = data_type_def,
         image = base64_def,
-        front = { type = "boolean" },
+        front = {
+            anyOf = {
+                { type = "boolean" },
+                { type = "string" , enum = {"true", "false"} }
+            }
+        },
         operation = {
             type = "string",
             emnu = { "rect" }
@@ -441,12 +446,6 @@ local license_plate = {
         accessToken = access_token_def,
         dataType = data_type_def,
         image = base64_def,
-        front = {
-            anyOf = {
-                { type = "boolean" },
-                { type = "string" , menu = {"true", "false"} }
-            }
-        },
         scene = {
             type = "string",
             emnu = { "lpr" , "general" }
@@ -468,7 +467,7 @@ local license_plate_res_data = {
                 number = plate_number_def,
                 color  = {
                     type = "string",
-                    menu = { "blue", "green", "yellow" }
+                    enum = { "blue", "green", "yellow" }
                 },
                 confidence = {
                     type = "array",
