@@ -374,7 +374,7 @@ local driver_license_match_t  = {
     ["初次领证日期"] = { key = "date_of_frist_issue", fn= convert},
     ["准驾车型"]     = { key = "type"},
     ["有效期限"]     = { key = "valid_for"},
-    ["性别"]         = { key = "gander"}
+    ["性别"]         = { key = "gender"}
 }
 
 local driver_license_res_data_def = t_clone(response_data2)
