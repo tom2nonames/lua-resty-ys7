@@ -322,7 +322,10 @@ local id_card_match_t = {
     ["住址"]         = { key = "address"},
     ["公民身份号码"] = { key = "id_no" },
     ["出生"]         = { key = "date_of_birth", fn = convert },
-    ["性别"]         = { key = "gender"}
+    ["性别"]         = { key = "gender"},
+    ["签发日期"]     = { key = "date_of_issue", fn = convert },
+    ["失效日期"]     = { key = "expiration_date", fn = convert },
+    ["签发机关"]     = { key = "issuing_authority"}
 }
 
 local id_card_res_data_def = t_clone(response_data2)

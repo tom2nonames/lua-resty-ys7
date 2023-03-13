@@ -291,14 +291,17 @@ function _M.ocr(self, type, opts)
     if match then
         local words , locations = {} , {}
         for k,v in pairs(data.words) do
-            local key = match[k].key
-            local fn  = match[k].fn
-            if fn then
-                words[key] = fn(v)
+            if not match[k] then
+                words[k] = v
             else
-                words[key] = v
+                local key = match[k].key
+                local fn  = match[k].fn
+                if fn then
+                    words[key] = fn(v)
+                else
+                    words[key] = v
+                end
             end
-
         end
         data.words = words
 
