@@ -2,6 +2,8 @@
 local jsonschema = require("jsonschema")
 local t_clone    = require("table.clone")
 
+local t_insert= table.insert
+
 local sfmt = string.format
 local ssub = string.sub
 local _M = { version = 0.1 }
@@ -493,6 +495,41 @@ license_plate_res_data_def.properties.data = license_plate_res_data
 
 _M.license_plate_res_data_def = license_plate_res_data_def
 _M.license_plate_def = license_plate
+
+
+local cloud_capture_data = {
+    description = "云抓拍数据",
+    type = "object",
+    properties = {
+        is_sync       = { type = "boolean"},
+        deviceSerial  = { type = "string" },
+        channelNo     = { type = "integer"},
+        projectId     = { type = "string" },
+        fileId        = { type = "string" },
+        captureType   = { type = "integer", enum = { 1,2 } },
+        validateCode  = { type = "string" },
+        devProto      = { type = "string" },
+        streamType    = { type = "integer", enum = { 1,2 } },
+        wait_sec      = { type = "integer"},
+    },
+    required = { "is_sync", "deviceSerial", "channelNo", "projectId"}
+}
+_M.cloud_capture_data = cloud_capture_data
+
+local upload_cloudrecord_file = {
+    description = "获取文件下载/在线播放地址",
+    type = "object",
+    properties = {
+        projectId     = { type = "string" },
+        fileId        = { type = "string" },
+        contentType   = { type = "string" },
+        expireSeconds = { type = "string" }
+    },
+    required = { "projectId", "fileId" }
+}
+_M.upload_cloudrecord_file = upload_cloudrecord_file
+
+
 
 _M.validator = validator
 
